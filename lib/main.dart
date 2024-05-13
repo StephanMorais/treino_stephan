@@ -65,7 +65,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text(
-          'TREINO DE ARMAMENTO',
+          'TREINO MARCIAL',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
