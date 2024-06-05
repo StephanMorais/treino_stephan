@@ -33,38 +33,42 @@ class ExerciseespadaPage extends StatefulWidget {
 
 class _ExercisePageState extends State<ExerciseespadaPage> {
   List<Exercise> exercises = [
-    Exercise("Giro com o pulso para frente", "repeticao"),
-    Exercise("Giro como pulso para trás", "repeticao"),
+    Exercise("Giro com o pulso para frente (Com cada mão)", "repeticao"),
+    Exercise("Giro como pulso para trás (Com cada mão)", "repeticao"),
     Exercise("DESCANSE", "descanso"),
-    Exercise("Corte fendente com deslocamento", "repeticao"),
+    Exercise("Corte fendente com deslocamento (Com cada mão)", "repeticao"),
     Exercise("DESCANSE", "descanso"),
-    Exercise("Corte volante com deslocamento", "repeticao"),
+    Exercise("Corte volante com deslocamento (Com cada mão)", "repeticao"),
     Exercise("DESCANSE", "descanso"),
-    Exercise("Corte sotano com mudança de guarda", "repeticao"),
+    Exercise("Corte sotano com mudança de guarda (Com cada mão)", "repeticao"),
     Exercise("DESCANSE", "descanso"),
-    Exercise("Corte fendente com deslocamento lateral", "repeticao"),
+    Exercise(
+        "Corte fendente com deslocamento lateral (Com cada mão)", "repeticao"),
     Exercise("DESCANSE", "descanso"),
-    Exercise("Canguru com corte", "repeticao"),
+    Exercise("Canguru com corte (Com cada guarda)", "repeticao"),
     Exercise("DESCANSE", "descanso"),
     Exercise("Coverta com corte - mão esquerda", "tempo"),
     Exercise("DESCANSE", "descanso"),
-    Exercise("Giro de pulso com as duas mãos", "repeticao"),
+    Exercise("Coverta com corte - mão direita", "tempo"),
     Exercise("DESCANSE", "descanso"),
-    Exercise("Corte fendente com deslocamento", "repeticao"),
+    Exercise("Giro de pulso com as duas mãos (Com cada guarda)", "repeticao"),
     Exercise("DESCANSE", "descanso"),
-    Exercise("Corte volante com deslocamento", "repeticao"),
+    Exercise("Corte fendente com deslocamento (Com cada mão)", "repeticao"),
     Exercise("DESCANSE", "descanso"),
-    Exercise("Corte sotano com mudança de guarda", "repeticao"),
+    Exercise("Corte volante com deslocamento (Com cada mão)", "repeticao"),
     Exercise("DESCANSE", "descanso"),
-    Exercise("Corte fendente com deslocamento lateral", "repeticao"),
+    Exercise("Corte sotano com mudança de guarda (Com cada mão)", "repeticao"),
     Exercise("DESCANSE", "descanso"),
-    Exercise("Canguru com corte", "repeticao"),
+    Exercise(
+        "Corte fendente com deslocamento lateral (Com cada mão)", "repeticao"),
+    Exercise("DESCANSE", "descanso"),
+    Exercise("Canguru com corte (Com cada guarda)", "repeticao"),
     Exercise("EXERCÍCIO CONCLUÍDO, PODE FECHAR O APLICATIVO!", 'final')
   ];
 
   int currentExerciseIndex = 0;
   Timer? _timer;
-  int _tempoSeconds = 120;
+  int _tempoSeconds = 60;
   int _descansoSeconds = 10;
 
   @override
@@ -86,7 +90,7 @@ class _ExercisePageState extends State<ExerciseespadaPage> {
           if (_tempoSeconds > 0) {
             _tempoSeconds--;
           } else {
-            _tempoSeconds = 120;
+            _tempoSeconds = 60;
             _nextExercise();
           }
         } else if (exercises[currentExerciseIndex].type == "descanso") {
@@ -116,9 +120,9 @@ class _ExercisePageState extends State<ExerciseespadaPage> {
         currentExerciseIndex--;
         if (currentExerciseIndex >= exercises.length) {
           currentExerciseIndex = 0;
-        } else {
-          currentExerciseIndex = 0;
         }
+      } else {
+        currentExerciseIndex = 0;
       }
     });
   }

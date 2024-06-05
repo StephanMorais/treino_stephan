@@ -53,7 +53,9 @@ class _ExercisePageState extends State<ExercisekatanaPage> {
     Exercise("Giro com o pulso para frente", "repeticao"),
     Exercise("Giro como pulso para trás", "repeticao"),
     Exercise("DESCANSE", "descanso"),
-    Exercise("90º", "tempo"),
+    Exercise("90º - Guarda Comum", "tempo"),
+    Exercise("DESCANSE", "descanso"),
+    Exercise("90º - Guarda Invertida", "tempo"),
     Exercise("DESCANSE", "descanso"),
     Exercise("Corte vertical", "repeticao"),
     Exercise("DESCANSE", "descanso"),
@@ -61,27 +63,29 @@ class _ExercisePageState extends State<ExercisekatanaPage> {
     Exercise("DESCANSE", "descanso"),
     Exercise("Cortes diagonais ", "repeticao"),
     Exercise("DESCANSE", "descanso"),
-    Exercise("Mizui Ryu", "repeticao,"),
+    Exercise("Mizui Ryu", "repeticao"),
     Exercise("DESCANSE", "descanso"),
-    Exercise("Noto e Chiburi", "repeticao,"),
+    Exercise("Noto e Chiburi", "repeticao"),
     Exercise("DESCANSE", "descanso"),
-    Exercise("180º", "tempo"),
+    Exercise("180º - Guarda Comum", "tempo"),
+    Exercise("DESCANSE", "descanso"),
+    Exercise("180º- Guarda Invertida ", "tempo"),
     Exercise("DESCANSE", "descanso"),
     Exercise("Corte vertical -mão esquerda", "repeticao"),
     Exercise("DESCANSE", "descanso"),
-    Exercise("Cortes horizontais-mão esquerda", "repeticao"),
+    Exercise("Cortes horizontais", "repeticao"),
     Exercise("DESCANSE", "descanso"),
-    Exercise("Cortes diagonais -mão esquerda", "repeticao"),
+    Exercise("Cortes diagonais", "repeticao"),
     Exercise("DESCANSE", "descanso"),
-    Exercise("Mizui Ryu", "repeticao,"),
+    Exercise("Mizui Ryu", "repeticao"),
     Exercise("DESCANSE", "descanso"),
-    Exercise("Noto e Chiburi", "repeticao,"),
+    Exercise("Noto e Chiburi", "repeticao"),
     Exercise("EXERCÍCIO CONCLUÍDO, PODE FECHAR O APLICATIVO!", 'final')
   ];
 
   int currentExerciseIndex = 0;
   Timer? _timer;
-  int _tempoSeconds = 120;
+  int _tempoSeconds = 60;
   int _descansoSeconds = 10;
 
   @override
@@ -103,7 +107,7 @@ class _ExercisePageState extends State<ExercisekatanaPage> {
           if (_tempoSeconds > 0) {
             _tempoSeconds--;
           } else {
-            _tempoSeconds = 120;
+            _tempoSeconds = 60;
             _nextExercise();
           }
         } else if (exercises[currentExerciseIndex].type == "descanso") {

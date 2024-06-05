@@ -147,7 +147,7 @@ class _ExercisePageState extends State<Exercise12Page> {
                 ),
               if (exercises[currentExerciseIndex].type == "recarga")
                 Text(
-                  '15 CARTUCHOS- CADA LADO',
+                  '2 X 5 CARTUCHOS- CADA LADO',
                   style: TextStyle(fontSize: 30.0),
                   textAlign: TextAlign.center,
                 ),
