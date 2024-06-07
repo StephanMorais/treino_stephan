@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 void main() {
-  runApp(MyApp());
+  runApp(faca());
 }
 
 class Exercise {
@@ -12,7 +12,7 @@ class Exercise {
   Exercise(this.name, this.type);
 }
 
-class MyApp extends StatelessWidget {
+class faca extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

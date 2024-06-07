@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'espadalonga.dart';
-import '12.dart';
-import 'dao.dart';
-import 'katana.dart';
-import 'faca.dart';
+
+import 'package:treino_stephan/12.dart';
+import 'package:treino_stephan/dao.dart';
+import 'package:treino_stephan/espadalonga.dart';
+import 'package:treino_stephan/faca.dart';
+import 'package:treino_stephan/katana.dart';
+import 'selecao.dart';
+import 'treinoDiario.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,48 +21,23 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
+        'selecao.dart': (context) => selecao(),
+        'treinoDiario.dart': (context) => diario(),
         '12.dart': (context) => Exercise12Page(),
         'katana.dart': (context) => ExercisekatanaPage(),
         'dao.dart': (context) => ExercisedaoPage(),
         'faca.dart': (context) => ExercisefacaPage(),
         'espadalonga.dart': (context) => ExerciseespadaPage(),
       },
-      home: HomePage(),
+      home: HomePageIndex(),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePageIndex extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    String dayOfWeek = DateTime.now().weekday.toString();
     String dayMessage = '';
-
-    switch (dayOfWeek) {
-      case '1':
-        dayMessage = 'HEMA';
-        break;
-      case '2':
-        dayMessage = 'SHOTGUN';
-        break;
-      case '3':
-        dayMessage = 'FACÃO DUPLO';
-        break;
-      case '4':
-        dayMessage = 'FACA';
-        break;
-      case '5':
-        dayMessage = 'KENJUTSU';
-        break;
-      case '6':
-        dayMessage = 'DIA DE DESCANSO';
-        break;
-      case '7':
-        dayMessage = 'DIA DE DESCANSO';
-        break;
-      default:
-        dayMessage = '';
-    }
 
     return Scaffold(
       appBar: AppBar(
@@ -87,32 +65,23 @@ class HomePage extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                switch (dayOfWeek) {
-                  case '1':
-                    Navigator.pushReplacementNamed(context, 'espadalonga.dart');
-                    break;
-                  case '2':
-                    Navigator.pushReplacementNamed(context, '12.dart');
-                    break;
-                  case '3':
-                    Navigator.pushReplacementNamed(context, 'dao.dart');
-                    break;
-                  case '4':
-                    Navigator.pushReplacementNamed(context, 'faca.dart');
-                    break;
-                  case '5':
-                    Navigator.pushReplacementNamed(context, 'katana.dart');
-                    break;
-                  default:
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text('DEIXE SUAS PATAS DESCANSAREM!'),
-                      ),
-                    );
-                }
+                Navigator.pushReplacementNamed(context, 'selecao.dart');
               },
               child: Text(
-                'INICIAR',
+                'ESCOLHA SEU TREINO',
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 0, 0, 0)),
+              ),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, 'treinoDiario.dart');
+              },
+              child: Text(
+                'FAÇA O TREINO DIÁRIO',
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
