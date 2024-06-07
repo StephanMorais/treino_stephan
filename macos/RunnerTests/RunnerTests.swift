@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import FlutterMacOS
 import Cocoa
+=======
+import Cocoa
+import FlutterMacOS
+>>>>>>> 10c2689 (adição de pagina de seleção de exercicio)
 import XCTest
 
 class RunnerTests: XCTestCase {
