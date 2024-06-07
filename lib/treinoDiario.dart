@@ -4,6 +4,7 @@ import '12.dart';
 import 'dao.dart';
 import 'katana.dart';
 import 'faca.dart';
+import 'main.dart';
 
 void main() {
   runApp(diario());
@@ -23,6 +24,7 @@ class diario extends StatelessWidget {
         'dao.dart': (context) => ExercisedaoPage(),
         'faca.dart': (context) => ExercisefacaPage(),
         'espadalonga.dart': (context) => ExerciseespadaPage(),
+        'main.dart': (context) => HomePageIndex(),
       },
       home: HomePage(),
     );
@@ -117,6 +119,21 @@ class HomePage extends StatelessWidget {
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Color.fromARGB(255, 0, 0, 0)),
+              ),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+                  backgroundColor: const Color.fromARGB(255, 0, 0, 0)),
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, 'main.dart');
+              },
+              child: const Text(
+                'VOLTAR',
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 255, 255, 255)),
               ),
             )
           ],

@@ -4,6 +4,7 @@ import 'katana.dart';
 import 'dao.dart';
 import 'faca.dart';
 import 'espadalonga.dart';
+import 'main.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         'dao.dart': (context) => ExercisedaoPage(),
         'faca.dart': (context) => ExercisefacaPage(),
         'espadalonga.dart': (context) => ExerciseespadaPage(),
+        '/': (context) => HomePageIndex(),
       },
       home: selecao(),
     );
@@ -63,7 +65,7 @@ class selecao extends StatelessWidget {
                 Navigator.pushReplacementNamed(context, 'espadalonga.dart');
               },
               child: const Text(
-                'FACA',
+                'ESPADA LONGA',
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -120,6 +122,21 @@ class selecao extends StatelessWidget {
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Color.fromARGB(255, 0, 0, 0)),
+              ),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+                  backgroundColor: const Color.fromARGB(255, 0, 0, 0)),
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, '/');
+              },
+              child: const Text(
+                'VOLTAR',
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 255, 255, 255)),
               ),
             )
           ],

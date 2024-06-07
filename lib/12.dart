@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
+import 'main.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -21,6 +23,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      routes: {
+        'main.dart': (context) => HomePageIndex(),
+      },
       home: Exercise12Page(),
     );
   }
@@ -206,6 +211,21 @@ class _ExercisePageState extends State<Exercise12Page> {
                   ),
                 ],
               ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+                    backgroundColor: const Color.fromARGB(255, 0, 0, 0)),
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, 'main.dart');
+                },
+                child: const Text(
+                  'INÍCIO',
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 255, 255, 255)),
+                ),
+              )
             ],
           ),
         ));

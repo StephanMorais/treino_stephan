@@ -5,8 +5,8 @@ import 'package:treino_stephan/dao.dart';
 import 'package:treino_stephan/espadalonga.dart';
 import 'package:treino_stephan/faca.dart';
 import 'package:treino_stephan/katana.dart';
-import 'selecao.dart';
-import 'treinoDiario.dart';
+import 'package:treino_stephan/selecao.dart';
+import 'package:treino_stephan/treinoDiario.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,12 +22,13 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         'selecao.dart': (context) => selecao(),
-        'treinoDiario.dart': (context) => diario(),
+        'treino_stephan/treinoDiario.dart': (context) => diario(),
         '12.dart': (context) => Exercise12Page(),
         'katana.dart': (context) => ExercisekatanaPage(),
         'dao.dart': (context) => ExercisedaoPage(),
         'faca.dart': (context) => ExercisefacaPage(),
         'espadalonga.dart': (context) => ExerciseespadaPage(),
+        'main.dart': (context) => HomePageIndex(),
       },
       home: HomePageIndex(),
     );
@@ -37,8 +38,6 @@ class MyApp extends StatelessWidget {
 class HomePageIndex extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    String dayMessage = '';
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
@@ -55,13 +54,6 @@ class HomePageIndex extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              '$dayMessage',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
@@ -78,7 +70,8 @@ class HomePageIndex extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushReplacementNamed(context, 'treinoDiario.dart');
+                Navigator.pushReplacementNamed(
+                    context, 'treino_stephan/treinoDiario.dart');
               },
               child: Text(
                 'FAÇA O TREINO DIÁRIO',
