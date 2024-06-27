@@ -1,10 +1,10 @@
 # treino_stephan
 
-Projeto em Flutter usando linguagem DART para organizar treinamento diário com armas brancas e de fogo para finalidade esportiva.
+Projeto em Flutter usando linguagem DART para organizar treinamento diário com armas brancas e de fogo para finalidade esportiva e marcial.
 
 ## diagrama de classes
 
-mermaid```
+```mermaid
 
 classDiagram
   class MyApp {
@@ -63,4 +63,4 @@ classDiagram
   diario --> HomePage
   diario --> Exercise
 
-mermaid```
+```
