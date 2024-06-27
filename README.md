@@ -1,16 +1,66 @@
 # treino_stephan
 
-A new Flutter project.
+Projeto em Flutter usando linguagem DART para organizar treinamento diário com armas brancas e de fogo para finalidade esportiva.
 
-## Getting Started
+## diagrama de classes
 
-This project is a starting point for a Flutter application.
+mermaid```
 
-A few resources to get you started if this is your first Flutter project:
+classDiagram
+  class MyApp {
+    - MaterialApp app
+  }
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+  class diario {
+    - String title
+    - ThemeData theme
+  }
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  class HomePage {
+    - String dayOfWeek
+    - String dayMessage
+  }
+
+  class selecao {
+    - String dayMessage
+  }
+
+  class Exercise {
+    - final String name
+    - final String type
+  }
+
+  class Exercise12Page
+  class ExerciseKatanaPage
+  class ExercisedaoPage
+  class ExercicioFacaPage
+  class ExerciseespadaPage
+  class HomePageIndex
+
+  MyApp --> HomePageIndex
+  MyApp --> selecao
+  MyApp --> diario
+  MyApp --> Exercise12Page
+  MyApp --> ExerciseKatanaPage
+  MyApp --> ExercisedaoPage
+  MyApp --> ExercicioFacaPage
+  MyApp --> ExerciseespadaPage
+
+  HomePageIndex --> HomePage
+  HomePageIndex --> Exercise12Page
+  HomePageIndex --> ExerciseKatanaPage
+  HomePageIndex --> ExercisedaoPage
+  HomePageIndex --> ExercicioFacaPage
+  HomePageIndex --> ExerciseespadaPage
+
+  selecao --> ExerciseespadaPage
+  selecao --> Exercise12Page
+  selecao --> ExercisedaoPage
+  selecao --> ExercicioFacaPage
+  selecao --> ExerciseKatanaPage
+
+  HomePage --> Exercise
+  diario --> HomePage
+  diario --> Exercise
+
+mermaid```

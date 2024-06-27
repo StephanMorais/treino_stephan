@@ -40,29 +40,29 @@ class _ExercisePageState extends State<ExercisedaoPage> {
   List<Exercise> exercises = [
     Exercise("Giro de pulso para frente", "repeticao"),
     Exercise("Giro de pulso para trás", "repeticao"),
-    Exercise("DESCANSE", "descanso"),
+    Exercise("DESCANSO", "descanso"),
     Exercise("Perfuração com 2 mãos", "kata"),
-    Exercise("DESCANSE", "descanso"),
+    Exercise("DESCANSO", "descanso"),
     Exercise("Corte vindo do ombro", "repeticao"),
-    Exercise("DESCANSE", "descanso"),
+    Exercise("DESCANSO", "descanso"),
     Exercise("Aparar e cortar", "repeticao"),
-    Exercise("DESCANSE", "descanso"),
+    Exercise("DESCANSO", "descanso"),
     Exercise("Corte diagonal duplo", "repeticao"),
-    Exercise("DESCANSE", "descanso"),
+    Exercise("DESCANSO", "descanso"),
     Exercise("Corte horizontal alternado", "repeticao"),
-    Exercise("DESCANSE", "descanso"),
+    Exercise("DESCANSO", "descanso"),
     Exercise("4 cortes alternados", "repeticao"),
-    Exercise("DESCANSE", "descanso"),
+    Exercise("DESCANSO", "descanso"),
     Exercise("Perfuração com 2 mãos", "kata"),
-    Exercise("DESCANSE", "descanso"),
+    Exercise("DESCANSO", "descanso"),
     Exercise("Corte vindo do ombro", "repeticao"),
-    Exercise("DESCANSE", "descanso"),
+    Exercise("DESCANSO", "descanso"),
     Exercise("Aparar e cortar", "repeticao"),
-    Exercise("DESCANSE", "descanso"),
+    Exercise("DESCANSO", "descanso"),
     Exercise("Corte diagonal duplo", "repeticao"),
-    Exercise("DESCANSE", "descanso"),
+    Exercise("DESCANSO", "descanso"),
     Exercise("Corte horizontal alternado", "repeticao"),
-    Exercise("DESCANSE", "descanso"),
+    Exercise("DESCANSO", "descanso"),
     Exercise("4 cortes alternados", "repeticao"),
     Exercise("EXERCÍCIO CONCLUÍDO, PODE FECHAR O APLICATIVO!", 'final')
   ];
@@ -130,111 +130,139 @@ class _ExercisePageState extends State<ExercisedaoPage> {
 
   @override
   Widget build(BuildContext context) {
+    String nextExerciseName = currentExerciseIndex + 1 < exercises.length
+        ? exercises[currentExerciseIndex + 1].name
+        : 'Nenhum';
+
     return Scaffold(
         appBar: AppBar(
           title:
               Text('Exercício ${currentExerciseIndex + 1}/${exercises.length}'),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                exercises[currentExerciseIndex].name,
-                style: TextStyle(fontSize: 18.0),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 30.0),
-              if (exercises[currentExerciseIndex].type == "tempo")
-                Text(
-                  '$_tempoSeconds',
-                  style: TextStyle(fontSize: 30.0),
-                  textAlign: TextAlign.center,
-                ),
-              if (exercises[currentExerciseIndex].type == "repeticao")
-                Text(
-                  '30X',
-                  style: TextStyle(fontSize: 30.0),
-                  textAlign: TextAlign.center,
-                ),
-              if (exercises[currentExerciseIndex].type == "kata")
-                Text(
-                  '10X',
-                  style: TextStyle(fontSize: 30.0),
-                  textAlign: TextAlign.center,
-                ),
-              if (exercises[currentExerciseIndex].type == "descanso")
-                Text(
-                  '$_descansoSeconds',
-                  style: TextStyle(fontSize: 30.0),
-                  textAlign: TextAlign.center,
-                ),
-              if (exercises[currentExerciseIndex].type == "repeticao")
-                SizedBox(height: 18.0),
-              if (exercises[currentExerciseIndex].type == "repeticao")
-                ElevatedButton(
-                    onPressed: () {
-                      _nextExercise();
-                    },
-                    child: Text('PRONTO'),
-                    style: ElevatedButton.styleFrom(
-                        foregroundColor:
-                            const Color.fromARGB(255, 255, 255, 255),
-                        backgroundColor: const Color.fromARGB(255, 0, 0, 0))),
-              if (exercises[currentExerciseIndex].type == "kata")
-                SizedBox(height: 18.0),
-              if (exercises[currentExerciseIndex].type == "kata")
-                ElevatedButton(
-                  onPressed: () {
-                    _nextExercise();
-                  },
-                  child: Text('PRONTO'),
-                  style: ElevatedButton.styleFrom(
-                      foregroundColor: const Color.fromARGB(255, 255, 255, 255),
-                      backgroundColor: const Color.fromARGB(255, 0, 0, 0)),
-                ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      _previousExercise();
-                    },
-                    child: Text('<ANTERIOR'),
-                    style: ElevatedButton.styleFrom(
-                        foregroundColor:
-                            const Color.fromARGB(255, 255, 255, 255),
-                        backgroundColor: const Color.fromARGB(255, 0, 0, 0)),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      _nextExercise();
-                    },
-                    child: Text('PROXIMO >'),
-                    style: ElevatedButton.styleFrom(
-                        foregroundColor:
-                            const Color.fromARGB(255, 255, 255, 255),
-                        backgroundColor: const Color.fromARGB(255, 0, 0, 0)),
-                  ),
-                ],
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    foregroundColor: const Color.fromARGB(255, 255, 255, 255),
-                    backgroundColor: const Color.fromARGB(255, 0, 0, 0)),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, 'main.dart');
-                },
-                child: const Text(
-                  'INÍCIO',
+        body: Column(
+          children: [
+            if (exercises[currentExerciseIndex].type != "final")
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Próximo: $nextExerciseName',
                   style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 255, 255, 255)),
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-              )
-            ],
-          ),
+              ),
+            Expanded(
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      exercises[currentExerciseIndex].name,
+                      style: TextStyle(fontSize: 18.0),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 30.0),
+                    if (exercises[currentExerciseIndex].type == "tempo")
+                      Text(
+                        '$_tempoSeconds',
+                        style: TextStyle(fontSize: 30.0),
+                        textAlign: TextAlign.center,
+                      ),
+                    if (exercises[currentExerciseIndex].type == "repeticao")
+                      Text(
+                        '30X',
+                        style: TextStyle(fontSize: 30.0),
+                        textAlign: TextAlign.center,
+                      ),
+                    if (exercises[currentExerciseIndex].type == "kata")
+                      Text(
+                        '10X',
+                        style: TextStyle(fontSize: 30.0),
+                        textAlign: TextAlign.center,
+                      ),
+                    if (exercises[currentExerciseIndex].type == "descanso")
+                      Text(
+                        '$_descansoSeconds',
+                        style: TextStyle(fontSize: 30.0),
+                        textAlign: TextAlign.center,
+                      ),
+                    if (exercises[currentExerciseIndex].type == "repeticao")
+                      SizedBox(height: 18.0),
+                    if (exercises[currentExerciseIndex].type == "repeticao")
+                      ElevatedButton(
+                          onPressed: () {
+                            _nextExercise();
+                          },
+                          child: Text('PRONTO'),
+                          style: ElevatedButton.styleFrom(
+                              foregroundColor:
+                                  const Color.fromARGB(255, 255, 255, 255),
+                              backgroundColor:
+                                  const Color.fromARGB(255, 0, 0, 0))),
+                    if (exercises[currentExerciseIndex].type == "kata")
+                      SizedBox(height: 18.0),
+                    if (exercises[currentExerciseIndex].type == "kata")
+                      ElevatedButton(
+                        onPressed: () {
+                          _nextExercise();
+                        },
+                        child: Text('PRONTO'),
+                        style: ElevatedButton.styleFrom(
+                            foregroundColor:
+                                const Color.fromARGB(255, 255, 255, 255),
+                            backgroundColor:
+                                const Color.fromARGB(255, 0, 0, 0)),
+                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            _previousExercise();
+                          },
+                          child: Text('<ANTERIOR'),
+                          style: ElevatedButton.styleFrom(
+                              foregroundColor:
+                                  const Color.fromARGB(255, 255, 255, 255),
+                              backgroundColor:
+                                  const Color.fromARGB(255, 0, 0, 0)),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            _nextExercise();
+                          },
+                          child: Text('PROXIMO >'),
+                          style: ElevatedButton.styleFrom(
+                              foregroundColor:
+                                  const Color.fromARGB(255, 255, 255, 255),
+                              backgroundColor:
+                                  const Color.fromARGB(255, 0, 0, 0)),
+                        ),
+                      ],
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          foregroundColor:
+                              const Color.fromARGB(255, 255, 255, 255),
+                          backgroundColor: const Color.fromARGB(255, 0, 0, 0)),
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, 'main.dart');
+                      },
+                      child: const Text(
+                        'INÍCIO',
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 255, 255, 255)),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ],
         ));
   }
 }

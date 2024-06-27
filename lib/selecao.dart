@@ -20,9 +20,9 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '12.dart': (context) => Exercise12Page(),
-        'katana.dart': (context) => ExercisekatanaPage(),
+        'katana.dart': (context) => ExerciseKatanaPage(),
         'dao.dart': (context) => ExercisedaoPage(),
-        'faca.dart': (context) => ExercisefacaPage(),
+        'faca.dart': (context) => ExercicioFacaPage(),
         'espadalonga.dart': (context) => ExerciseespadaPage(),
         '/': (context) => HomePageIndex(),
       },
