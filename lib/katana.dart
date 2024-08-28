@@ -37,42 +37,35 @@ class ExerciseKatanaPage extends StatefulWidget {
 
 class _ExercisePageState extends State<ExerciseKatanaPage> {
   List<Exercise> exercises = [
-    Exercise("Giro com o pulso para frente", "repeticao"),
-    Exercise("Giro como pulso para trás", "repeticao"),
+    Exercise("CORTE VERTICAL(GUARDA COMUM)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("90º - Guarda Comum", "tempo"),
+    Exercise("CORTE VERTICAL (GUARDA INVERTIDA)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("90º - Guarda Invertida", "tempo"),
+    Exercise("CORTE DIAGONAL(GUARDA COMUM)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("Corte vertical", "repeticao"),
+    Exercise("CORTE DIAGONAL(GUARDA INVERTIDA)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("Cortes horizontais", "repeticao"),
+    Exercise("CORTE HORIZONTAL(GUARDA COMUM)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("Cortes diagonais", "repeticao"),
+    Exercise("CORTE HORIZONTAL(GUARDA INVERTIDA)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("Mizui Ryu", "repeticao"),
+    Exercise("90° GRAUS(GUARDA COMUM)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("Noto e Chiburi", "repeticao"),
+    Exercise("90° GRAUS(GUARDA INVERTIDA)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("180º - Guarda Comum", "tempo"),
+    Exercise("180° GRAUS(GUARDA COMUM)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("180º- Guarda Invertida", "tempo"),
+    Exercise("180° GRAUS(GUARDA INVERTIDA)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("Corte vertical - mão esquerda", "repeticao"),
+    Exercise("NOTO E CHIBURI(GUARDA COMUM)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("Cortes horizontais", "repeticao"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("Cortes diagonais", "repeticao"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("Mizui Ryu", "repeticao"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("Noto e Chiburi", "repeticao"),
+    Exercise("NOTO E CHIBURI(GUARDA INVERTIDA)", "tempo"),
     Exercise("EXERCÍCIO CONCLUÍDO, PODE FECHAR O APLICATIVO!", 'final')
   ];
 
   int currentExerciseIndex = 0;
   Timer? _timer;
-  int _tempoSeconds = 60;
+  int _tempoSeconds = 120;
   int _descansoSeconds = 10;
 
   @override
@@ -94,8 +87,16 @@ class _ExercisePageState extends State<ExerciseKatanaPage> {
           if (_tempoSeconds > 0) {
             _tempoSeconds--;
           } else {
-            _tempoSeconds = 60;
+            _tempoSeconds = 120;
             _nextExercise();
+          }
+          if (exercises[currentExerciseIndex].type == "meditacao") {
+            if (_tempoSeconds > 0) {
+              _tempoSeconds--;
+            } else {
+              _tempoSeconds = 120;
+              _nextExercise();
+            }
           }
         } else if (exercises[currentExerciseIndex].type == "descanso") {
           if (_descansoSeconds > 0) {
@@ -122,7 +123,7 @@ class _ExercisePageState extends State<ExerciseKatanaPage> {
     setState(() {
       if (currentExerciseIndex > 0) {
         currentExerciseIndex--;
-        if (currentExerciseIndex >= exercises.length) {
+        if (currentExerciseIndex <= exercises.length) {
           currentExerciseIndex = 0;
         } else {
           currentExerciseIndex = 0;
@@ -179,9 +180,9 @@ class _ExercisePageState extends State<ExerciseKatanaPage> {
                         style: TextStyle(fontSize: 30.0),
                         textAlign: TextAlign.center,
                       ),
-                    if (exercises[currentExerciseIndex].type == "kata")
+                    if (exercises[currentExerciseIndex].type == "meditacao")
                       Text(
-                        '4X CADA SEQUENCIA',
+                        '$_tempoSeconds',
                         style: TextStyle(fontSize: 30.0),
                         textAlign: TextAlign.center,
                       ),

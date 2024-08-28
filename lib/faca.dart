@@ -38,36 +38,24 @@ class ExercicioFacaPage extends StatefulWidget {
 
 class _ExercisePageState extends State<ExercicioFacaPage> {
   List<Exercise> exercises = [
-    Exercise("3 perfurações", "repeticao"),
+    Exercise("PERFURAÇÃO COMUM(MÃO ESQUERDA)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("3 cortes", "repeticao"),
+    Exercise("PERFURAÇÃO COMUM(MÃO DIREITA)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("3 perfurações com guarda invertida", "repeticao"),
+    Exercise("PERFURAÇÃO INVERTIDA(MÃO ESQUERDA)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("3 perfurações", "repeticao"),
+    Exercise("PERFURAÇÃO INVERTIDA(MÃO DIREITA)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("3 cortes", "repeticao"),
+    Exercise("CORTE (MÃO ESQUERDA)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("3 perfurações com guarda invertida", "repeticao"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("3 perfurações", "repeticao"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("3 cortes", "repeticao"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("3 perfurações com guarda invertida", "repeticao"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("3 perfurações", "repeticao"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("3 cortes mão direita", "repeticao"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("3 perfurações com guarda invertida", "repeticao"),
+    Exercise("CORTE (MÃO DIREITA)", "tempo"),
     Exercise("EXERCÍCIO CONCLUÍDO, PODE FECHAR O APLICATIVO!", 'final')
   ];
 
   int currentExerciseIndex = 0;
   Timer? _timer;
-  int _tempoSeconds = 130;
-  int _descansoSeconds = 30;
+  int _tempoSeconds = 150;
+  int _descansoSeconds = 10;
 
   @override
   void initState() {
@@ -88,14 +76,14 @@ class _ExercisePageState extends State<ExercicioFacaPage> {
           if (_tempoSeconds > 0) {
             _tempoSeconds--;
           } else {
-            _tempoSeconds = 130;
+            _tempoSeconds = 150;
             _nextExercise();
           }
         } else if (exercises[currentExerciseIndex].type == "descanso") {
           if (_descansoSeconds > 0) {
             _descansoSeconds--;
           } else {
-            _descansoSeconds = 30;
+            _descansoSeconds = 10;
             _nextExercise();
           }
         }

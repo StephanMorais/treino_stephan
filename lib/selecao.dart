@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import '12.dart';
 import 'katana.dart';
-import 'dao.dart';
+import 'estilete.dart';
 import 'faca.dart';
 import 'espadalonga.dart';
+import 'facadupla.dart';
 import 'main.dart';
 
 void main() {
@@ -21,9 +22,10 @@ class MyApp extends StatelessWidget {
       routes: {
         '12.dart': (context) => Exercise12Page(),
         'katana.dart': (context) => ExerciseKatanaPage(),
-        'dao.dart': (context) => ExercisedaoPage(),
+        'estilete.dart': (context) => ExerciseEstiletePage(),
         'faca.dart': (context) => ExercicioFacaPage(),
         'espadalonga.dart': (context) => ExerciseespadaPage(),
+        'facadupla.dart': (context) => ExerciceFacaduplaPage(),
         '/': (context) => HomePageIndex(),
       },
       home: selecao(),
@@ -65,7 +67,7 @@ class selecao extends StatelessWidget {
                 Navigator.pushReplacementNamed(context, 'espadalonga.dart');
               },
               child: const Text(
-                'ESPADA LONGA',
+                'ESPADAS EUROPEIAS',
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -88,10 +90,10 @@ class selecao extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushReplacementNamed(context, 'dao.dart');
+                Navigator.pushReplacementNamed(context, 'estilete.dart');
               },
               child: const Text(
-                'FACÃO',
+                'ESTILETE',
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -124,6 +126,20 @@ class selecao extends StatelessWidget {
                     color: Color.fromARGB(255, 0, 0, 0)),
               ),
             ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, 'facadupla.dart');
+              },
+              child: const Text(
+                'FACAS DUPLAS',
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 0, 0, 0)),
+              ),
+            ),
+            const SizedBox(height: 20),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                   foregroundColor: const Color.fromARGB(255, 255, 255, 255),

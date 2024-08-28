@@ -38,31 +38,15 @@ class Exercise12Page extends StatefulWidget {
 
 class _ExercisePageState extends State<Exercise12Page> {
   List<Exercise> exercises = [
-    Exercise("Engajamento", "repeticao"),
+    Exercise("PROGRESSÃO", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("Engajamento de ombro", "repeticao"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("Ambidestria", "repeticao"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("Recarga Emergencial", "recarga"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("Coronhada", "repeticao"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("Engajamento", "repeticao"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("Engajamento de ombro", "repeticao"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("Ambidestria", "repeticao"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("Recarga Emergencial", "recarga"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("Coronhada - ", "repeticao"),
-    Exercise("EXERCÍCIO CONCLUÍDO, PODE FECHAR O APLICATIVO!", 'final')
+    Exercise("RECARGA", "tempo"),
+    Exercise("EXERCÍCIO CONCLUÍDO, PODE FECHAR O APLICATIVO!", 'final'),
   ];
 
   int currentExerciseIndex = 0;
   Timer? _timer;
-  int _tempoSeconds = 130;
+  int _tempoSeconds = 300;
   int _descansoSeconds = 10;
 
   @override
@@ -84,7 +68,7 @@ class _ExercisePageState extends State<Exercise12Page> {
           if (_tempoSeconds > 0) {
             _tempoSeconds--;
           } else {
-            _tempoSeconds = 130;
+            _tempoSeconds = 300;
             _nextExercise();
           }
         } else if (exercises[currentExerciseIndex].type == "descanso") {
@@ -163,50 +147,11 @@ class _ExercisePageState extends State<Exercise12Page> {
                         style: TextStyle(fontSize: 30.0),
                         textAlign: TextAlign.center,
                       ),
-                    if (exercises[currentExerciseIndex].type == "repeticao")
-                      Text(
-                        '15X DE CADA LADO',
-                        style: TextStyle(fontSize: 30.0),
-                        textAlign: TextAlign.center,
-                      ),
-                    if (exercises[currentExerciseIndex].type == "recarga")
-                      Text(
-                        '2 X 5 CARTUCHOS- CADA LADO',
-                        style: TextStyle(fontSize: 30.0),
-                        textAlign: TextAlign.center,
-                      ),
                     if (exercises[currentExerciseIndex].type == "descanso")
                       Text(
                         '$_descansoSeconds',
                         style: TextStyle(fontSize: 30.0),
                         textAlign: TextAlign.center,
-                      ),
-                    if (exercises[currentExerciseIndex].type == "repeticao")
-                      SizedBox(height: 18.0),
-                    if (exercises[currentExerciseIndex].type == "repeticao")
-                      ElevatedButton(
-                          onPressed: () {
-                            _nextExercise();
-                          },
-                          child: Text('PRONTO'),
-                          style: ElevatedButton.styleFrom(
-                              foregroundColor:
-                                  const Color.fromARGB(255, 255, 255, 255),
-                              backgroundColor:
-                                  const Color.fromARGB(255, 0, 0, 0))),
-                    if (exercises[currentExerciseIndex].type == "kata")
-                      SizedBox(height: 18.0),
-                    if (exercises[currentExerciseIndex].type == "kata")
-                      ElevatedButton(
-                        onPressed: () {
-                          _nextExercise();
-                        },
-                        child: Text('PRONTO'),
-                        style: ElevatedButton.styleFrom(
-                            foregroundColor:
-                                const Color.fromARGB(255, 255, 255, 255),
-                            backgroundColor:
-                                const Color.fromARGB(255, 0, 0, 0)),
                       ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

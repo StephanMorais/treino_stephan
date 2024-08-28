@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '12.dart';
-import 'dao.dart';
+import 'estilete.dart';
 import 'espadalonga.dart';
 import 'faca.dart';
 import 'katana.dart';
 import 'selecao.dart';
 import 'treinoDiario.dart';
+import 'facadupla.dart';
 
 void main() {
   runApp(MyApp());
@@ -25,10 +26,11 @@ class MyApp extends StatelessWidget {
         'treinoDiario.dart': (context) => diario(),
         '12.dart': (context) => Exercise12Page(),
         'katana.dart': (context) => ExerciseKatanaPage(),
-        'dao.dart': (context) => ExercisedaoPage(),
+        'estilete.dart': (context) => ExerciseEstiletePage(),
         'faca.dart': (context) => ExercicioFacaPage(),
         'espadalonga.dart': (context) => ExerciseespadaPage(),
         'main.dart': (context) => HomePageIndex(),
+        'facadupla.dart': (context) => ExerciceFacaduplaPage(),
       },
       home: HomePageIndex(),
     );

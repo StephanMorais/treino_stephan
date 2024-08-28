@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'espadalonga.dart';
 import '12.dart';
-import 'dao.dart';
+import 'estilete.dart';
 import 'katana.dart';
 import 'faca.dart';
 import 'main.dart';
+import 'facadupla.dart';
 
 void main() {
   runApp(diario());
@@ -21,10 +22,11 @@ class diario extends StatelessWidget {
       routes: {
         '12.dart': (context) => Exercise12Page(),
         'katana.dart': (context) => ExerciseKatanaPage(),
-        'dao.dart': (context) => ExercisedaoPage(),
+        'estilete.dart': (context) => ExerciseEstiletePage(),
         'faca.dart': (context) => ExercicioFacaPage(),
         'espadalonga.dart': (context) => ExerciseespadaPage(),
         'main.dart': (context) => HomePageIndex(),
+        'facadupla.dart': (context) => ExerciceFacaduplaPage(),
       },
       home: HomePage(),
     );
@@ -39,13 +41,13 @@ class HomePage extends StatelessWidget {
 
     switch (dayOfWeek) {
       case '1':
-        dayMessage = 'HEMA';
+        dayMessage = 'ESPADAS EUROPEIAS';
         break;
       case '2':
         dayMessage = 'SHOTGUN';
         break;
       case '3':
-        dayMessage = 'FACÃO DUPLO';
+        dayMessage = 'ESTILETE';
         break;
       case '4':
         dayMessage = 'FACA';
@@ -54,7 +56,7 @@ class HomePage extends StatelessWidget {
         dayMessage = 'KENJUTSU';
         break;
       case '6':
-        dayMessage = 'DIA DE DESCANSO';
+        dayMessage = 'LAMINAS DUPLAS';
         break;
       case '7':
         dayMessage = 'DIA DE DESCANSO';
@@ -97,13 +99,16 @@ class HomePage extends StatelessWidget {
                     Navigator.pushReplacementNamed(context, '12.dart');
                     break;
                   case '3':
-                    Navigator.pushReplacementNamed(context, 'dao.dart');
+                    Navigator.pushReplacementNamed(context, 'estilete.dart');
                     break;
                   case '4':
                     Navigator.pushReplacementNamed(context, 'faca.dart');
                     break;
                   case '5':
                     Navigator.pushReplacementNamed(context, 'katana.dart');
+                    break;
+                  case '6':
+                    Navigator.pushReplacementNamed(context, 'facadupla.dart');
                     break;
                   default:
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -121,6 +126,7 @@ class HomePage extends StatelessWidget {
                     color: Color.fromARGB(255, 0, 0, 0)),
               ),
             ),
+            const SizedBox(height: 20),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                   foregroundColor: const Color.fromARGB(255, 255, 255, 255),

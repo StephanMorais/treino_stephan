@@ -4,7 +4,7 @@ import 'dart:async';
 import 'main.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(FacaApp());
 }
 
 class Exercise {
@@ -14,7 +14,7 @@ class Exercise {
   Exercise(this.name, this.type);
 }
 
-class MyApp extends StatelessWidget {
+class FacaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,63 +26,31 @@ class MyApp extends StatelessWidget {
       routes: {
         'main.dart': (context) => HomePageIndex(),
       },
-      home: ExerciseespadaPage(),
+      home: ExerciceFacaduplaPage(),
     );
   }
 }
 
-class ExerciseespadaPage extends StatefulWidget {
+class ExerciceFacaduplaPage extends StatefulWidget {
   @override
   _ExercisePageState createState() => _ExercisePageState();
 }
 
-class _ExercisePageState extends State<ExerciseespadaPage> {
+class _ExercisePageState extends State<ExerciceFacaduplaPage> {
   List<Exercise> exercises = [
-    Exercise("GIRO DA ESPADA PARA FRENTE (MÃO ESQUERDA)", "tempo"),
+    Exercise("ESTOCADA CRUZADA", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("GIRO DA ESPADA PARA FRENTE (MÃO DIREITA)", "tempo"),
+    Exercise("CORTES DIAGONAIS ALTERNADOS", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("CORTE FENDENTE CURTO (MÃO ESQUERDA)", "tempo"),
+    Exercise("CORTES DIAGONAIS CONSECUTIVOS", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("CORTE FENDENTE CURTO (MÃO DIREITA)", "tempo"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("CORTE VOLANTE CURTO (MÃO ESQUERDA)", "tempo"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("CORTE VOLANTE CURTO (MÃO DIREITA)", "tempo"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("CORTE MEZZANO CURTO (MÃO ESQUERDA)", "tempo"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("CORTE MEZZANO CURTO (GUARDA COMUM)", "tempo"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("COVERTA COM CORTE (MÃO ESQUERDA)", "tempo"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("COVERTA COM CORTE (GUARDA COMUM)", "tempo"),
-    Exercise("TROQUE PARA", "TROCA"),
-    Exercise("GIRO DA ESPADA PARA FRENTE (GUARDA INVERTIDA", "tempo"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("GIRO DA ESPADA PARA FRENTE (GUARDA COMUM)", "tempo"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("CORTE FENDENTE CURTO (GUARDA INVERTIDA)", "tempo"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("CORTE FENDENTE CURTO (GUARDA COMUM)", "tempo"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("CORTE VOLANTE CURTO (GUARDA INVERTIDA)", "tempo"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("CORTE VOLANTE CURTO (GUARDA COMUM)", "tempo"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("CORTE MEZZANO CURTO (GUARDA INVERTIDA)", "tempo"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("CORTE MEZZANO CURTO (GUARDA COMUM)", "tempo"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("COVERTA COM CORTE (GUARDA INVERTIDA)", "tempo"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("COVERTA COM CORTE GUARDA COMUM)", "tempo"),
+    Exercise("4 CORTES COM DEFESA", "tempo"),
     Exercise("EXERCÍCIO CONCLUÍDO, PODE FECHAR O APLICATIVO!", 'final')
   ];
 
   int currentExerciseIndex = 0;
   Timer? _timer;
-  int _tempoSeconds = 60;
+  int _tempoSeconds = 240;
   int _descansoSeconds = 10;
 
   @override
@@ -104,7 +72,7 @@ class _ExercisePageState extends State<ExerciseespadaPage> {
           if (_tempoSeconds > 0) {
             _tempoSeconds--;
           } else {
-            _tempoSeconds = 60;
+            _tempoSeconds = 240;
             _nextExercise();
           }
         } else if (exercises[currentExerciseIndex].type == "descanso") {
@@ -134,9 +102,9 @@ class _ExercisePageState extends State<ExerciseespadaPage> {
         currentExerciseIndex--;
         if (currentExerciseIndex >= exercises.length) {
           currentExerciseIndex = 0;
+        } else {
+          currentExerciseIndex = 0;
         }
-      } else {
-        currentExerciseIndex = 0;
       }
     });
   }
@@ -183,23 +151,51 @@ class _ExercisePageState extends State<ExerciseespadaPage> {
                         style: TextStyle(fontSize: 30.0),
                         textAlign: TextAlign.center,
                       ),
-                    if (exercises[currentExerciseIndex].type == "troca")
+                    if (exercises[currentExerciseIndex].type == "repeticao")
                       Text(
-                        'ESPADA LONGA',
+                        '15X CADA MÃO',
+                        style: TextStyle(fontSize: 30.0),
+                        textAlign: TextAlign.center,
+                      ),
+                    if (exercises[currentExerciseIndex].type == "kata")
+                      Text(
+                        '4X',
                         style: TextStyle(fontSize: 30.0),
                         textAlign: TextAlign.center,
                       ),
                     if (exercises[currentExerciseIndex].type == "descanso")
                       Text(
                         '$_descansoSeconds',
-                        style: TextStyle(
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: TextStyle(fontSize: 30.0),
                         textAlign: TextAlign.center,
                       ),
                     if (exercises[currentExerciseIndex].type == "repeticao")
                       SizedBox(height: 18.0),
+                    if (exercises[currentExerciseIndex].type == "repeticao")
+                      ElevatedButton(
+                          onPressed: () {
+                            _nextExercise();
+                          },
+                          child: Text('PRONTO'),
+                          style: ElevatedButton.styleFrom(
+                              foregroundColor:
+                                  const Color.fromARGB(255, 255, 255, 255),
+                              backgroundColor:
+                                  const Color.fromARGB(255, 0, 0, 0))),
+                    if (exercises[currentExerciseIndex].type == "kata")
+                      SizedBox(height: 18.0),
+                    if (exercises[currentExerciseIndex].type == "kata")
+                      ElevatedButton(
+                        onPressed: () {
+                          _nextExercise();
+                        },
+                        child: Text('PRONTO'),
+                        style: ElevatedButton.styleFrom(
+                            foregroundColor:
+                                const Color.fromARGB(255, 255, 255, 255),
+                            backgroundColor:
+                                const Color.fromARGB(255, 0, 0, 0)),
+                      ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -227,7 +223,6 @@ class _ExercisePageState extends State<ExerciseespadaPage> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 20),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           foregroundColor:

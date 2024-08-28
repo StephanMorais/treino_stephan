@@ -26,50 +26,43 @@ class MyApp extends StatelessWidget {
       routes: {
         'main.dart': (context) => HomePageIndex(),
       },
-      home: ExercisedaoPage(),
+      home: ExerciseEstiletePage(),
     );
   }
 }
 
-class ExercisedaoPage extends StatefulWidget {
+class ExerciseEstiletePage extends StatefulWidget {
   @override
   _ExercisePageState createState() => _ExercisePageState();
 }
 
-class _ExercisePageState extends State<ExercisedaoPage> {
+class _ExercisePageState extends State<ExerciseEstiletePage> {
   List<Exercise> exercises = [
-    Exercise("Giro de pulso para frente", "repeticao"),
-    Exercise("Giro de pulso para trás", "repeticao"),
+    Exercise("ESTOCADA(MÃO ESQUERDA)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("Perfuração com 2 mãos", "kata"),
+    Exercise("ESTOCADA(MÃO DIREITA)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("Corte vindo do ombro", "repeticao"),
+    Exercise("CORTE DIAGONAL(MÃO ESQUERDA)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("Aparar e cortar", "repeticao"),
+    Exercise("CORTE DIAGONAL(MÃO DIREITA)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("Corte diagonal duplo", "repeticao"),
+    Exercise("CORTE HORIZONTAL(MÃO ESQUERDA)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("Corte horizontal alternado", "repeticao"),
+    Exercise("CORTE HORIZONTAL(MÃO DIREITA)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("4 cortes alternados", "repeticao"),
+    Exercise("DEFESA COM CORTE DIAGONAL(MÃO ESQUERDA)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("Perfuração com 2 mãos", "kata"),
+    Exercise("DEFESA COM CORTE DIAGONAL(MÃO DIREITA)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("Corte vindo do ombro", "repeticao"),
+    Exercise("DEFESA COM CORTE HORIZONTAL(MÃO ESQUERDA)", "tempo"),
     Exercise("DESCANSO", "descanso"),
-    Exercise("Aparar e cortar", "repeticao"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("Corte diagonal duplo", "repeticao"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("Corte horizontal alternado", "repeticao"),
-    Exercise("DESCANSO", "descanso"),
-    Exercise("4 cortes alternados", "repeticao"),
+    Exercise("DEFESA COM CORTE HORIZONTAL(MÃO DIREITA)", "tempo"),
     Exercise("EXERCÍCIO CONCLUÍDO, PODE FECHAR O APLICATIVO!", 'final')
   ];
 
   int currentExerciseIndex = 0;
   Timer? _timer;
-  int _tempoSeconds = 120;
+  int _tempoSeconds = 60;
   int _descansoSeconds = 10;
 
   @override
@@ -91,7 +84,7 @@ class _ExercisePageState extends State<ExercisedaoPage> {
           if (_tempoSeconds > 0) {
             _tempoSeconds--;
           } else {
-            _tempoSeconds = 120;
+            _tempoSeconds = 60;
             _nextExercise();
           }
         } else if (exercises[currentExerciseIndex].type == "descanso") {
